@@ -5,11 +5,11 @@
 For years, people have been exploiting their creativity in finding strategies to generate profits from stock market, 
 and have invented countless brilliant quantitative models for trading. However, the assumptions/constraints of most of the traditional models, such as normality asssumption, have limited the use of the models and requires complex data transformation before using the model.
 In Comparison, RNN model, LSTM specifically, has no limits on the distributions of data, and is designed to handel time series data. Therefore, it is worth trying 
-to test the ability of LSTM networks to predict stock price, and examine the return of the trading strategies based on the LSTM models.
+to test the ability of LSTM networks to perform trades, and examine the return of the trading strategies based on the LSTM models.
 
 ## Overview
-In the first half of this report, we will focus on comparing the choices of different feature subsets as input, and the differnces in prediction time period. Then, we will try to 
-predict the return of a stock based on the buy and hold strategy.
+In the case of stock price prediction, the more features added as input the worse the final cumulative return is. Also, since predicted price is then translated to trading postion, the requirement on prediction accuracy is very high.
+On the contrary, predicting log-return of a stock omit the price-to-position process, thus potentially reduce the noises. Based on the experiment outcomes, predicting log-return using LSTM model will tend to achieve a higher returns.
 
 ## Table of Contact
 #### 1. Model Structure
