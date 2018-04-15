@@ -58,42 +58,40 @@ The cumulative return is simply the sum of all R(t).
 
 When predicting Log-return instead, only the sign of the predicted values matter, because log-return tells directly the trend of the price movement at t+1.
 The position at time t, B(t) is then:
+
 <img src="/pics/Log return position.png" alt="alt text" width="300" height="whatever">
 
-
+The return could be calculated accordingly.
 
 
 
 ## 2. Predicting price of a single stock
-### 2.1 one feature as input
+### 2.1 One feature as input
 We start with the most basic model, with only closed price of the stock as input. Data is Apple stock. In this case, each input sequence is a 30*1 matrix. For each sequence that starts at n, the target value is the value at n+30.
 
-<img src="/pics/Apple.norm.png" alt="alt text" width="600" height="whatever">
-
-After converting back to price, 
-
-
+<img src="/pics/apple-1feature.png" alt="alt text" width="600" height="whatever">
 
 It is interesting to see that the predicted value is very closed to the real value. Part of the reason is because it is predicting only one step ahead. Even if the prediction for t(n+1)is wrong, the real value of t(n+1) will be entered to predict t(n+2). However, if we are performing trading on a daily basis, predition for t+1 should be sufficient.
 
-Using the pre-defined buy and hold rule, the cumulative return is shown as the green dashed line below.
+After converting back to price, using the pre-defined buy and hold rule, the cumulative return is shown as the green dashed line below.
 
-<img src="/pics/Apple return.png" alt="alt text" width="600" height="whatever">
+<img src="/pics/apple-1feature-price.png" alt="alt text" width="600" height="whatever">
 
-The cumulative return did not perform well. When the price drop sharply, the return plummet as well. 
+
+The nominal return is 13 at the end, which is roughly 7.6% over a 61 day period. However, between day 0-25, it is obvious that the strategy made the oppossite decision and result in a loss, when the stock is actually rising. There are some deviation between the predicted and the real values. Reducing the deviations will help increase the performance.
 
 ### 2.2 Multiple features
 
 #### 2.2.1 Two Features: Close +Volume
-To achieve a better ressult, one way is to include more features. First of all, we will try to add volume as an additional feature along with close price.
+To achieve a better ressult, the volume of a listed stock is added as an additional feature along with close price.
 
-In this case, the initial input becomes  30*2 matrixs. Both features were normalized in the same way as in the previous case.
+In this case, the initial input for the first layer becomes 30*2 matrixs. Both features were normalized in the same way as in the previous case.
 
-<img src="/pics/close+volume.png" alt="alt text" width="600" height="whatever">
+<img src="/pics/apple-2features.png" alt="alt text" width="600" height="whatever">
 
 Supprisingly, with an additional feature, the predicted value becomes more volatile and has less prediction accuracy.
 
-<img src="/pics/close+volume price.png" alt="alt text" width="600" height="whatever">
+<img src="/pics/apple_2features-price.png" alt="alt text" width="600" height="whatever">
 
 Consequently, the return becomes more volatile as well, while cumulative return stay relatively the same compare to the previous case. The nominal return during the 61 days testing period ranges from -20 to 10, which converts to -13% to 5.8% change in profit.
 
