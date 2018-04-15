@@ -59,8 +59,53 @@ We start with the most basic model, with only closed price of the stock as input
 
 <img src="/pics/Apple.norm.png" alt="alt text" width="600" height="whatever">
 
+After converting back to price, 
 
 
-It is interesting to see that the predicted value is very closed to the real value. Part of the reason is because it is predicting only one step ahead. Even if the prediction for t(n+1)is wrong, the real value of t(n+1) will be entered to predict t(n+2). However, if we are performing trading on a daily base, predition for t+1 is sufficient.
+
+It is interesting to see that the predicted value is very closed to the real value. Part of the reason is because it is predicting only one step ahead. Even if the prediction for t(n+1)is wrong, the real value of t(n+1) will be entered to predict t(n+2). However, if we are performing trading on a daily basis, predition for t+1 should be sufficient.
+
+Using the pre-defined buy and hold rule, the cumulative return is shown as the green dashed line below.
+
+<img src="/pics/Apple return.png" alt="alt text" width="600" height="whatever">
+
+The cumulative return did not perform well. When the price drop sharply, the return plummet as well. 
+
+### 2.2 Multiple features
+
+#### 2.2.1 Two Features: Close +Volume
+To achieve a better ressult, one way is to include more features. First of all, we will try to add volume as an additional feature along with close price.
+
+In this case, the initial input becomes  30*2 matrixs. Both features were normalized in the same way as in the previous case.
+
+<img src="/pics/close+volume.png" alt="alt text" width="600" height="whatever">
+
+Supprisingly, with an additional feature, the predicted value becomes more volatile and has less prediction accuracy.
+
+<img src="/pics/close+volume price.png" alt="alt text" width="600" height="whatever">
+
+Consequently, the return becomes more volatile as well, while cumulative return stay relatively the same compare to the previous case. The nominal return during the 61 days testing period ranges from -20 to 10, which converts to -13% to 5.8% change in profit.
+
+#### 2.2.2 Five Features
+
+With all features added to the model (input: 30*5 matrix)), the prediction result is clearly improved.
+
+
+However, the cumulative return is the worst among all cases.
+
+
+## 3. Predicting return on a single stock
+
+Since the only goal for all trading strategies is to achieve positive return, instead of projecting futrue price, predicting log return might result in a better result, because in the previous case, the processs of converting from price to trading position might introduce extra errors.
+
+### 3.1 Data process
+
+
+
+
+
+
+
+
 
 
