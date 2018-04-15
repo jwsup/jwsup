@@ -95,17 +95,24 @@ Supprisingly, with an additional feature, the predicted value becomes more volat
 
 Consequently, the return becomes more volatile as well.The nominal return during the 61 days testing period ranges from -15 to 15, which converts to -8% to 8% change in profit. The cumulative return at then end is close to 0. 
 
-Clearly, adding volume has somehow introduced noise into the model and result in a worse result.
+Clearly, adding volume has somehow introduced noise into the model and led to a worse result.
 
 #### 2.2.2 Five Features
 
-With all features added to the model (input: 30*5 matrix)), the prediction result is clearly improved.
+With all features added to the model (input: 30*5 matrix)), the prediction result is better than having only 2 features, but is still not as good as the one feature case.
 
 <img src="/pics/apple-5features.png" alt="alt text" width="600" height="whatever">
 
 However, the cumulative return is the worst among all cases.
 
 <img src="/pics/apple_5features-price.png" alt="alt text" width="600" height="whatever">
+
+At the end of 61 days period, the portfolio loses 20.5% of the total asset. Looking at the shapes of returns and predicted values closely, it seems the other features have introduced lots of noise (predicted price rises sharply when the real price is decreasing slowly).
+
+#### 2.3 Summary: Predicting stock price
+
+Contrary to the original guess, adding more features does not increase the prediction accuracy of the model and instead introduces noises that will misslead the result. Also, as more features being included in the model, the volatility of overall return increases. Therefore, when predicting the price of stocks, using only price as feature will tend to result in a better perforamce.
+
 
 ## 3. Predicting return on a single stock
 
