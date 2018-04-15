@@ -12,6 +12,26 @@ In the first half of this report, we will focus on comparing the choices of diff
 predict the return of a stock based on the buy and hold strategy.
 
 ## Table of Contact
+#### 1. Model Structure
+  * 1.1 Data
+  * 1.2 Sequence Length
+    * 1.2.1 Data Normalization
+  * 1.3 Train-Test Split
+  * 1.4 LSTM model
+  * 1.5 Predicted Value and Return
+#### 2. Predicting price of a single stock
+  * 2.1 One feature as input
+  * 2.2 Multiple features
+    * 2.2.1 Two Features: Close +Volume
+    * 2.2.2 Five Features
+  * 2.3 Summary: Predicting stock price
+#### 3. Predicting Future Log-Return
+#### 4.Conclusion 
+
+  
+  
+ 
+
 
 ## 1. Model Structure
 
