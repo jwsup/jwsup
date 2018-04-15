@@ -131,7 +131,16 @@ After stock price transformed to log-return, the distribution becomes more stati
 In the graph above, the predicted log-return value are constatnly changing signs. After denormalization, the result is as follow:
 <img src="/pics/apple-log-return.png" alt="alt text" width="600" height="whatever">
 
-The model did not capture fully the magnitute of change in log-returns, however, the signs are generally matched. Over the testing period, the return is constantly rising.
+The model did not capture fully the magnitute of change in log-returns, however, the signs are generally matched. Over the testing period, the cumulative return is constantly rising and reached 11.7% gain in the end.
+
+The result is obviously the best among all cases. 
+
+## 4.Conclusion 
+
+With the aim to maximize profit, predicting log-return instead of predicting stock price is a better approach. Pedicting log-return not only reduces the unnecessary noise introduced during the process of converting price to trading position, but also lower the requirements on prediction accuracy, because only the sign of the log-return matters.
+
+In addition, adding more features does not improve the accuracy rate, but rather introduces noises which increase the deviation between the real and predicted value.
+
 
 
 
