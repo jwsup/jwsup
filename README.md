@@ -26,7 +26,7 @@ Data before 2017-12-29 is training set (12-30, 12-31 are weekends), the rest is 
 The time range of input is set to 30 days, which is equivalent to approximately 1.5 months. When time range being too large, e.g. 50days, data from long time ago does little help in determining the price at t+1.
 
 ### 1.3.1 Data Normalization
-
+In each sequence of data, value at t(n) will be expressed as the percentage change of value at t(0). Mathematically,
 
 ### 1.4 LSTM model
 The model has 5 layers in total (2 LSTM Layers + 3 Dense Layers)
