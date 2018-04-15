@@ -83,25 +83,29 @@ The nominal return is 13 at the end, which is roughly 7.6% over a 61 day period.
 ### 2.2 Multiple features
 
 #### 2.2.1 Two Features: Close +Volume
-To achieve a better ressult, the volume of a listed stock is added as an additional feature along with close price.
+To achieve a better ressult, the trade volume of a listed stock over a single dat is added as an additional feature along with close price.
 
 In this case, the initial input for the first layer becomes 30*2 matrixs. Both features were normalized in the same way as in the previous case.
 
 <img src="/pics/apple-2features.png" alt="alt text" width="600" height="whatever">
 
-Supprisingly, with an additional feature, the predicted value becomes more volatile and has less prediction accuracy.
+Supprisingly, with an additional feature, the predicted value becomes more volatile and has even larger deviation .
 
 <img src="/pics/apple_2features-price.png" alt="alt text" width="600" height="whatever">
 
-Consequently, the return becomes more volatile as well, while cumulative return stay relatively the same compare to the previous case. The nominal return during the 61 days testing period ranges from -20 to 10, which converts to -13% to 5.8% change in profit.
+Consequently, the return becomes more volatile as well.The nominal return during the 61 days testing period ranges from -15 to 15, which converts to -8% to 8% change in profit. The cumulative return at then end is close to 0. 
+
+Clearly, adding volume has somehow introduced noise into the model and result in a worse result.
 
 #### 2.2.2 Five Features
 
 With all features added to the model (input: 30*5 matrix)), the prediction result is clearly improved.
 
+<img src="/pics/apple-5features.png" alt="alt text" width="600" height="whatever">
 
 However, the cumulative return is the worst among all cases.
 
+<img src="/pics/apple_5features-price.png" alt="alt text" width="600" height="whatever">
 
 ## 3. Predicting return on a single stock
 
