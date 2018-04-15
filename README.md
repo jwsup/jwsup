@@ -103,7 +103,7 @@ With all features added to the model (input: 30*5 matrix)), the prediction resul
 
 <img src="/pics/apple-5features.png" alt="alt text" width="600" height="whatever">
 
-However, the cumulative return is the worst among all cases.
+The cumulative return is the worst among all cases.
 
 <img src="/pics/apple_5features-price.png" alt="alt text" width="600" height="whatever">
 
@@ -114,11 +114,24 @@ At the end of 61 days period, the portfolio loses 20.5% of the total asset. Look
 Contrary to the original guess, adding more features does not increase the prediction accuracy of the model and instead introduces noises that will misslead the result. Also, as more features being included in the model, the volatility of overall return increases. Therefore, when predicting the price of stocks, using only price as feature will tend to result in a better perforamce.
 
 
-## 3. Predicting return on a single stock
+## 3. Predicting Future Log-Return
 
-Since the only goal for all trading strategies is to achieve positive return, instead of projecting futrue price, predicting log return might result in a better result, because in the previous case, the processs of converting from price to trading position might introduce extra errors.
+Since the ultimate goal for all trading strategies is to achieve positive return, instead of projecting futrue price, predicting log return might lead to better performance. The rationale is that when predicting future price, there will be model error, and converting predicted price to trading position is another source of noises.
 
-### 3.1 Data process
+Predicting log-return directly will reduces noise in that only the sign of the predicted value matters.
+### Data transformation
+
+After stock price transformed to log-return, the distribution becomes more stationary.
+
+<img src="/pics/Log-trans.png" alt="alt text" width="400" height="whatever">
+
+### Result
+
+<img src="/pics/apple-log.png" alt="alt text" width="600" height="whatever">
+In the graph above, the predicted log-return value are constatnly changing signs. After denormalization, the result is as follow:
+<img src="/pics/apple-log-return.png" alt="alt text" width="600" height="whatever">
+
+The model did not capture fully the magnitute of change in log-returns, however, the signs are generally matched. Over the testing period, the return is constantly rising.
 
 
 
