@@ -28,8 +28,11 @@ In each sequence of data, value at t(n) will be expressed as the percentage chan
 
 Log retrun is another normaliztion method. It is expressed as the difference between the log value of t and t-1.
 
+<img src="/pics/Log Return.png" alt="alt text" width="200" height="whatever">
+
 However, Log-return is not as good as the above normalization method. One reason might be because the log returns are very small (0.0004xxx) and thus make it hard to use mse to train the model.
 
+Below is the predicted value when using log-return as the normalization method:
 <img src="/pics/Log Return Transformation.png" alt="alt text" width="600" height="whatever">
 
 ### 1.3 Train-Test Split
@@ -44,18 +47,18 @@ Note: The input of the fist LSTM layer is (None, 30, 1) when there is only one f
 
 When training the model, small number of epochs is sufficient for capturing the features of data as the data size is small.
 
-1.5 Predicted Value and Return
+### 1.5 Predicted Value and Return
 
 In the case of predicting stock price, the target value is close price. Since the data is normalized before entering the model, the predicted value should be denormalized to retrieve the predicted price. Let B(t) denotes the position at time t, and R(t) denotes the return between t and t-1. Then, the return of a trade could be expressed as:
+
+<img src="/pics/position and return.png" alt="alt text" width="300" height="whatever">
 
 The cumulative return is simply the sum of all R(t).
 
 
-
-
-It is the close price that the model tries to predict. 
-For t+1 case, if price at t+1 is greater than current price, position will be 1; otherwise,-1
-For t+5 case, if price at t+5 is greater than current price, position will be 1; otherwise,-1
+When predicting Log-return instead, only the sign of the predicted values matter, because log-return tells directly the trend of the price movement at t+1.
+The position at time t, B(t) is then:
+<img src="/pics/Log return position.png" alt="alt text" width="300" height="whatever">
 
 
 
@@ -63,7 +66,7 @@ For t+5 case, if price at t+5 is greater than current price, position will be 1;
 
 ## 2. Predicting price of a single stock
 ### 2.1 one feature as input
-We start with the most basic model, with only closed price of the stock as input. Data is Apple stock. In this case, each input sequence is a 30*1 matrix. For each sequence of length 30, the target value is the value at t=31.
+We start with the most basic model, with only closed price of the stock as input. Data is Apple stock. In this case, each input sequence is a 30*1 matrix. For each sequence that starts at n, the target value is the value at n+30.
 
 <img src="/pics/Apple.norm.png" alt="alt text" width="600" height="whatever">
 
